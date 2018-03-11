@@ -18,8 +18,8 @@ class MySql extends DbDumper
     protected $dumpBinaryPath = '';
     protected $useExtendedInserts = true;
     protected $useSingleTransaction = false;
-    protected $includeTables = array();
-    protected $excludeTables = array();
+    protected $includeTables = [];
+    protected $excludeTables = [];
     protected $timeout;
 
     /**
@@ -253,6 +253,7 @@ class MySql extends DbDumper
             "{$this->dumpBinaryPath}mysqldump",
             "--defaults-extra-file=\"{$temporaryCredentialsFile}\"",
             '--skip-comments',
+            '--hex-blob',
             $this->useExtendedInserts ? '--extended-insert' : '--skip-extended-insert',
         ];
 
